@@ -1,0 +1,6 @@
+go-vertex-ai
+Copyright 2023 Uber Technologies, Inc.  
+
+Based on the vertex-ai API by Google 
+https://cloud.google.com/vertex-ai/docs/reference/rest
+Documentation licensed under Creative Commons Attribution 4.0 (https://creativecommons.org/licenses/by/4.0/)
