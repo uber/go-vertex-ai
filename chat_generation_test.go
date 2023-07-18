@@ -22,15 +22,17 @@ func (h *httpMockPredictChat) Do(req *http.Request) (*http.Response, error) {
 				"content": "Howdy?"
 			  }
 			],
-			"safetyAttributes": {
-			  "categories": [
-				"test1",
-				"test2",
-				"test3"
-			  ],
-			  "blocked": false,
-			  "scores": [0.1,0.2,0.3]
-			}
+			"safetyAttributes": [
+				{
+				"categories": [
+					"test1",
+					"test2",
+					"test3"
+				],
+				"blocked": false,
+				"scores": [0.1,0.2,0.3]
+				}
+			]
 		  }]}`))),
 	}, nil
 }
@@ -103,13 +105,15 @@ func Test_client_ChatGeneration(t *testing.T) {
 								Content: "Howdy?",
 							},
 						},
-						SafetyAttributes: SafetyAttributes{
-							Blocked: false,
-							Scores:  []float64{0.1, 0.2, 0.3},
-							Categories: []string{
-								"test1",
-								"test2",
-								"test3",
+						SafetyAttributes: []SafetyAttributes{
+							{
+								Blocked: false,
+								Scores:  []float64{0.1, 0.2, 0.3},
+								Categories: []string{
+									"test1",
+									"test2",
+									"test3",
+								},
 							},
 						},
 					},

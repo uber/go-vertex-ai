@@ -30,8 +30,8 @@ type ChatGenerationResponse struct {
 
 // ChatPrediction is the generated response
 type ChatPrediction struct {
-	ChatMessages     []ChatMessage    `json:"candidates"`
-	SafetyAttributes SafetyAttributes `json:"safetyAttributes"`
+	ChatMessages     []ChatMessage      `json:"candidates"`
+	SafetyAttributes []SafetyAttributes `json:"safetyAttributes"`
 }
 
 const (
@@ -54,7 +54,6 @@ func (c *client) ChatGeneration(
 	if err != nil {
 		return nil, fmt.Errorf("failed to create http request for predict endpoint: %v", err)
 	}
-
 	resp := &ChatGenerationResponse{}
 	err = c.sendRequest(httpReq, resp)
 	if err != nil {

@@ -10,7 +10,7 @@ type SafetyAttributes struct {
 type inputInstances struct {
 	Content  string        `json:"content"`
 	Context  string        `json:"context"`
-	Examples []Example     `json:"examples"`
+	Examples []Example     `json:"examples,omitempty"`
 	Messages []ChatMessage `json:"messages"`
 }
 
