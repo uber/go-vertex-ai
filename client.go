@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-// Client is the interface for the Vertex AI client for Bard LLM
+// Client is the interface for the Vertex AI client for PaLM
 type Client interface {
 	TextGeneration(ctx context.Context, req TextGenerationRequest) (*TextGenerationResponse, error)
 	ChatGeneration(ctx context.Context, req ChatGenerationRequest) (*ChatGenerationResponse, error)
@@ -19,7 +19,7 @@ type client struct {
 	tokenizer      tokenizer
 }
 
-// New creates a new client for the Vertex AI client for Bard LLM
+// New creates a new client for the Vertex AI client for PaLM
 // key is the oauth key of the Google Service account for authentication
 func New(key string) (Client, error) {
 	return &client{
