@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	vertexai "code.uber.internal/rds/vertex-ai-llm"
-	"code.uber.internal/rds/vertex-ai-llm/examples"
+	"vertexai"
+	"vertexai/examples"
 )
 
 var (
