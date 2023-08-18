@@ -3,6 +3,7 @@ package vertexai
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 )
 
@@ -19,13 +20,12 @@ func (c *client) sendRequest(req *http.Request, val any) error {
 	}
 
 	if res.StatusCode != http.StatusOK {
-		var errResp []byte
+		b, err := io.ReadAll(res.Body)
 		defer res.Body.Close()
-		_, err := res.Body.Read(errResp)
 		if err != nil {
 			return fmt.Errorf("status code: %s, message: %w", res.Status, err)
 		}
-		return fmt.Errorf("status code: %s, message: %s", res.Status, string(errResp))
+		return fmt.Errorf("status code: %s, message: %s", res.Status, string(b))
 	}
 
 	if val != nil {
